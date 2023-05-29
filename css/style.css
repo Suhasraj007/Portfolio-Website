@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Playfair:wght@300&display=swap');
+
+/* || RESET */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+input,
+button,
+textarea {
+    font: inherit;
+}
+
+/* || VARIABLES */
+
+:root {
+
+    /* FONTS */
+    --FF: "Open Sans", sans-serif;
+    --FF-HEADINGS: "Playfair", cursive;
+    --FONT-COLOR: #fff;
+    --FS: clamp(1rem, 2.2vh, 1.5rem);
+
+    /* COLORS */
+    --PRIMARY-COLOR: #F4EEEA;
+    --SECONDARY-COLOR: #121426;
+}
+
+/* || UTILITY CLASSES */
+
+.offscreen {
+    position: absolute;
+    left: -10000px;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+/* || GENERAL STYLES */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--PRIMARY-COLOR);
+    color: var(--FONT-COLOR);
+}
+
+/* || BLOCKS ELEMENTS*/
+/* HEADER  */
+.header {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.header__title{
+    display: flex;
+    gap: 0px 10px;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--FF-HEADINGS);
+    margin: 20px 0px 0px;
+}
+
+.header__logo {
+    width: min(100%, 60px);
+    opacity: 0.5;
+}
+
+.header__logo--img {
+    border-radius: 50%;
+}
+
+.header__title--line {
+    font-weight: 100;
+    font-size: 2.3rem;
+}
+
+.header__title--line:hover{
+    cursor: pointer;
+}
+
+.header__nav{
+    width: 60%;
+}
+
+.header__nav--list{
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    margin: 15px 0px;
+}
+
+.header__nav--items a{
+    color: var(--FONT-COLOR);
+    text-decoration: none;
+    font-family: var(--FF);
+    display: inline-block;
+    padding: 2px 0px;
+    transition: transform 0.5s ease-out;
+}
+
+.header__nav--items a:hover{
+    border-bottom: 1px solid #fff;
+    transform: scale(1.1);
+}
+
+/* .header__text{
+    text-transform: uppercase;
+    min-height: calc(100vh - 180px);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 5px #000;
+} */
+
+.header__bg{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: -1;
+    overflow: hidden;
+    opacity: 0.95;
+    max-height: 100vh;
+}
+
+.header__bg--img{
+    transition: transform .5s ease-in-out;
+}
+
+.header__bg--img:hover{
+    transform: scale(1.1);
+}
+
+/* MAIN  */
+.main{
+    position: relative;
+}
+/* || TO BE REMOVED  */
