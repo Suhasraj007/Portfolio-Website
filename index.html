@@ -18,6 +18,7 @@
 <body>
     <header class="header">
 
+        <div class="header__nav--container">
         <div class="header__title">
             <figure class="header__logo">
                 <img class="header__logo--img" src="img/logo_1000x1000.jpg" alt="Logo" width="1000" height="1000"
@@ -30,8 +31,8 @@
         <nav class="header__nav" aria-label="primary-navigation">
             <ul class="header__nav--list">
                 <li class="header__nav--items"><a href="">HOME</a></li>
-                <li class="header__nav--items"><a id="projects" href="">PROJECTS</a></li>
-                <li class="header__nav--items">
+                <li id="projects" class="header__nav--items"><a href="">PROJECTS</a></li>
+                <li id="about" class="header__nav--items">
                     <a href=""><span class="nowrap">ABOUT ME</span></a>
                 </li>
                 <li class="header__nav--items">
@@ -39,28 +40,29 @@
                 </li>
             </ul>
         </nav>
+    </div>
 
-        <div class="header__nav--extender">
-            <ul class="header__project--container">
-                <div class="header__projects">
-                <li class="header__project--head">Smart Home System</li>
-                <li class="header__project--desc">An Iot System </li>
-                <li class="header__project--desc">automatically detects and estinguishes fire and smoke</li>
-                <li class="header__project--desc">Sends an alert to user when fire is detected</li>
+        <div class="header__project--extender">
+            <ul class="header__animate--container">
+                <div class="header__animate">
+                <li class="header__animate--head">Smart Home System</li>
+                <li class="header__animate--desc">An Iot System </li>
+                <li class="header__animate--desc">automatically detects and estinguishes fire and smoke</li>
+                <li class="header__animate--desc">Sends an alert to user when fire is detected</li>
                 <a href="">Know more ></a>
                 </div>
-                <div class="header__projects">
-                <li class="header__project--head">Pet Boarding System</li>
-                <li class="header__project--desc">A full stack website </li>
-                <li class="header__project--desc">allows users to signup and login </li>
-                <li class="header__project--desc">allows users to book a pet boarding service</li>
+                <div class="header__animate">
+                <li class="header__animate--head">Pet Boarding System</li>
+                <li class="header__animate--desc">A full stack website </li>
+                <li class="header__animate--desc">allows users to signup and login </li>
+                <li class="header__animate--desc">allows users to book a pet boarding service</li>
                 <a href="">know more ></a>
                 </div>
-                <div class="header__projects">
-                <li class="header__project--head">Portfolio website</li>
-                <li class="header__project--desc">A front end application </li>
-                <li class="header__project--desc">Portfolio website about me</li>
-                <li class="header__project--desc">built using html css and javascript</li>
+                <div class="header__animate">
+                <li class="header__animate--head">Portfolio website</li>
+                <li class="header__animate--desc">A front end application </li>
+                <li class="header__animate--desc">Portfolio website about me</li>
+                <li class="header__animate--desc">built using html css and javascript</li>
                 <a href="">know more ></a>
                 </div>
             </ul>
