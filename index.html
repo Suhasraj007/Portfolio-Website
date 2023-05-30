@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="icon" href="img/logo_1000x1000.jpg" type="image/x-icon" />
 
-    <script src="main.js"></script>
+    <script defer src="js/main.js"></script>
 </head>
 
 <body>
@@ -26,10 +26,11 @@
             </figure>
             <h1 class="header__title--line">SUHAS</h1>
         </div>
+
         <nav class="header__nav" aria-label="primary-navigation">
             <ul class="header__nav--list">
                 <li class="header__nav--items"><a href="">HOME</a></li>
-                <li class="header__nav--items"><a href="">PROJECTS</a></li>
+                <li class="header__nav--items"><a id="projects" href="">PROJECTS</a></li>
                 <li class="header__nav--items">
                     <a href=""><span class="nowrap">ABOUT ME</span></a>
                 </li>
@@ -38,15 +39,45 @@
                 </li>
             </ul>
         </nav>
-        <!-- <p class="header__text">
-            <span>I'm Suhas an enthusiatic coder and web developer hoping to achieve some great things in my life.</span>
-            <span>I invite you to join in my journey.</span> 
-        </p> -->
-        <figure class="header__bg">
-            <img class="header__bg--img" src="img/main_bg_1900x928.png" width="1900" height="928" />
-            <figcaption class="offscreen">background-image for header</figcaption>
-        </figure>
- 
+
+        <div class="header__nav--extender">
+            <ul class="header__project--container">
+                <div class="header__projects">
+                <li class="header__project--head">Smart Home System</li>
+                <li class="header__project--desc">An Iot System </li>
+                <li class="header__project--desc">automatically detects and estinguishes fire and smoke</li>
+                <li class="header__project--desc">Sends an alert to user when fire is detected</li>
+                <a href="">Know more ></a>
+                </div>
+                <div class="header__projects">
+                <li class="header__project--head">Pet Boarding System</li>
+                <li class="header__project--desc">A full stack website </li>
+                <li class="header__project--desc">allows users to signup and login </li>
+                <li class="header__project--desc">allows users to book a pet boarding service</li>
+                <a href="">know more ></a>
+                </div>
+                <div class="header__projects">
+                <li class="header__project--head">Portfolio website</li>
+                <li class="header__project--desc">A front end application </li>
+                <li class="header__project--desc">Portfolio website about me</li>
+                <li class="header__project--desc">built using html css and javascript</li>
+                <a href="">know more ></a>
+                </div>
+            </ul>
+        </div>
+
+        <div class="header__bg--container">
+            <div class="header__text">
+                <p>I'm Suhas an enthusiatic coder and developer</p>
+                <p>hoping to achieve some great things in my life.</p>
+                <span id="element"></span>
+            </div>
+            <figure class="header__bg">
+                <img class="header__bg--img" src="img/main_bg_1900x928.png" width="1900" height="928" />
+                <figcaption class="offscreen">background-image for header</figcaption>
+            </figure>
+        </div>
+
     </header>
     <main>
         <article>
@@ -55,6 +86,15 @@
             </section>
             <section></section>
         </article>
+        <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+        <script>
+            var typed = new Typed('#element', {
+                strings: ['Fornt end developer', 'Back end developer', 'Java Programmer'],
+                typeSpeed: 50,
+                loop:true,
+                loopCount:Infinity
+            });
+        </script>
     </main>
     <footer>
         <nav aria-label="secondary-navigation"></nav>
