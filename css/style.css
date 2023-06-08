@@ -65,7 +65,7 @@ body {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .header__nav--container {
@@ -178,8 +178,9 @@ body {
     position: fixed;
     top: 125px;
     width: 75%;
-    background-color: #121426;
+    background-color: hsla(234, 36%, 11%, 0.9);
     z-index: 1;
+    padding: 25px;
 }
 
 .header__animate--container {
@@ -297,13 +298,23 @@ main{
 
 .flash__cards{
     display: flex;
+    padding: 10px;
 }
 
 .project__item{
     border:2px solid #121426;
     display: flex;
-    width: 40%;
-    margin:5%;
+    flex-direction: column;
+    width: 60%;
+    margin:3%;
+}
+
+.project__item p{
+    padding: 10px;
+}
+.project__item h2{
+    padding: 5px;
+    border-bottom: 1px solid #121426;
 }
 
 .scroll__animation{
@@ -320,6 +331,10 @@ main{
     height: 10px;
     border: 1px solid black;
     border-radius: 50%;
+}
+
+.circles:hover{
+    cursor: pointer;
 }
 
 .left__arrow{
@@ -349,4 +364,30 @@ main{
     height: 40px;
     width: 40px;
     background-color: rgba(0,0,0,0.4);
+}
+
+.left__arrow , .right__arrow:hover{
+    cursor:pointer;
+}
+
+.text__cursor{
+    animation: text-cursor 1s ease-in-out infinite ;
+}
+
+@keyframes text-cursor {
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.project__footer{
+    background-color: #F4EEEA;
+}
+
+.project__footer a{
+    display: inline-block;
+    padding: 10px;
 }

@@ -6,36 +6,63 @@ document.addEventListener("readystatechange", (event) => {
 });
 
 const initApp = () => {
-  var typed = new Typed("#element", {
-    strings: ["Fornt end developer", "Back end developer", "Java Programmer"],
-    typeSpeed: 50,
-    loop: true,
-    loopCount: Infinity,
-  });
+  // var typed = new Typed("#element", {
+  //   strings: ["Fornt end developer", "Back end developer", "Java Programmer"],
+  //   typeSpeed: 50,
+  //   loop: true,
+  //   loopCount: Infinity,
+  // });
+
+  const textArea = document.getElementById("element");
+  const animateText = [
+    "Front end developer",
+    "Back end developer",
+    "Java Programmer",
+  ];
+  let text = 0;
+  trial(text);
+
+  setInterval(() => {
+    text = (text + 1) % animateText.length;
+    trial(text);
+  }, (animateText[text].length + 1.1) * 100);
+
+  function trial(text) {
+    for (let index = 0; index < animateText[text].length; index++) {
+      animate(index);
+    }
+
+    function animate(index) {
+      setTimeout(() => {
+        textArea.textContent += `${animateText[text].charAt(index)}`;
+      }, index * 100);
+      reanimate();
+    }
+
+    function reanimate() {
+      setTimeout(() => {
+        textArea.textContent = " ";
+      }, (animateText[text].length + 1) * 100);
+    }
+  }
 
   const project = document.querySelector("#projects");
   const view = document.querySelector(".header__project--extender");
 
   project.addEventListener("mouseover", (event) => {
     view.style.display = "block";
-    console.log(event);
   });
 
   view.addEventListener("mouseout", (event) => {
     view.style.display = "none";
-    console.log(event);
-
   });
 
-  view.addEventListener("mouseover", (event2) => {
+  view.addEventListener("mouseover", (event) => {
     view.style.display = "block";
-    console.log(event);
   });
 
   project.addEventListener("mouseout", (event) => {
     view.style.display = "none";
-    console.log(event);
-
   });
 
   let lastKnownScrollPosition = window.scrollY;
@@ -63,6 +90,10 @@ const initApp = () => {
 
   function revert() {
     nav = document.querySelector(".header__nav--container");
+    ht = document.querySelector(".header__title");
+    prext = document.querySelector(".header__project--extender");
+    li = document.querySelectorAll(".header__nav--items");
+
     nav.style.background = "none";
     nav.style.flexFlow = "column nowrap";
     ht.style.margin = "20px 0px 0px";
