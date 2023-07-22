@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Playfair:wght@300&display=swap');
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
 
 /* || RESET */
 *,
@@ -47,6 +48,18 @@ textarea {
     white-space: nowrap;
 }
 
+.bold{
+    font-weight: bolder;
+}
+
+.inline{
+    display: inline;
+}
+
+.large{
+    font-size: 1.5rem;
+}
+
 /* || GENERAL STYLES */
 
 html {
@@ -58,7 +71,7 @@ body {
     color: var(--FONT-COLOR);
 }
 
-/* || BLOCKS ELEMENTS*/
+/* || BLOCKS, ELEMENTS*/
 /* HEADER  */
 .header {
     min-height: 100vh;
@@ -168,10 +181,6 @@ body {
     text-shadow: 2px 2px 5px #000;
 }
 
-#element {
-    text-shadow: 5px 5px 5px var(--SECONDARY-COLOR);
-}
-
 .header__project--extender{
     display: none;
     padding: 20px;
@@ -226,14 +235,28 @@ body {
     transform-origin:  0% 50%;
 }
 
+.text__cursor{
+    animation: text-cursor 1s ease-in-out infinite ;
+}
+
+@keyframes text-cursor {
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
 /* MAIN  */
-main{
+.main{
     position: relative;
     color: #000;
     font-family: var(--FF);
 }
 
-.main__container{
+.about{
+    font-size: 1.1rem;
     display: grid;
     grid-template-columns: 44% 54%;
     gap: 0px 10px;
@@ -262,7 +285,7 @@ main{
 }
 
 .about__photo{
-    width:70%;
+    width:60%;
     margin: 20px 0px 20px 0px;
     overflow: hidden;
     border: 2px solid black;
@@ -277,23 +300,26 @@ main{
 }
 
 .about__info--container{
-    margin: 85px 0px 0px 30px;
+    margin: 50px 0px 10px 40px;
 }
 
 .about__info--container p{
-    margin: 15px 0px 15px 0px;
+    margin: 5px 0px 15px 0px;
 }
 
+.about__resume{
+    color: #000;
+}
+
+/* PROJECTS */
+
 .project__container{
-    min-height: 100vh;
     position: relative;
     background: #edd4be;
-    overflow: hidden;
 }
 
 .project{
     padding: 75px 0px 0px 30px;
-    width: 120%;
 }
 
 .flash__cards{
@@ -307,87 +333,95 @@ main{
     flex-direction: column;
     width: 60%;
     margin:3%;
+    justify-content: space-between;
 }
 
 .project__item p{
     padding: 10px;
 }
+
 .project__item h2{
     padding: 5px;
     border-bottom: 1px solid #121426;
 }
 
-.scroll__animation{
-    display: flex;
-    border: 2px solid black;
-    height: 20px;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-}
-
-.circles{
-    width: 10px;
-    height: 10px;
-    border: 1px solid black;
-    border-radius: 50%;
-}
-
-.circles:hover{
-    cursor: pointer;
-}
-
-.left__arrow{
-    font-weight:900;
-    font-size: 1.3rem;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: lightgray;
-    top: 55%;
-    height: 40px;
-    width: 40px;
-    background-color: rgba(0,0,0,0.4);
-}
-
-.right__arrow{
-    font-weight: 900;
-    font-size: 1.3rem;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: lightgray;
-    top: 55%;
-    right: 0;
-    height: 40px;
-    width: 40px;
-    background-color: rgba(0,0,0,0.4);
-}
-
-.left__arrow , .right__arrow:hover{
-    cursor:pointer;
-}
-
-.text__cursor{
-    animation: text-cursor 1s ease-in-out infinite ;
-}
-
-@keyframes text-cursor {
-    50%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-
 .project__footer{
     background-color: #F4EEEA;
+    padding: 10px;
 }
 
 .project__footer a{
+    font-size: 1.2rem;
     display: inline-block;
+    text-decoration: none;
+    color: #000;
+}
+
+/* CONTACT */
+
+.contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.contact__heading{
     padding: 10px;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.contact__info{
+    text-align: center;
+}
+
+.contact__tiles--desc{
+    display: block;
+}
+
+.contact__form{
+    width: 50%;
+}
+
+.contact__tiles{
+    padding: 5px;
+}
+
+.contact__tiles--input{
+    margin: 5px;
+    width: 100%;
+    padding: 5px;
+    resize: none;
+}
+
+.contact__btn--container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.contact__btn{
+    width: 35%;
+    margin: 0px 10px;
+}
+
+/* FOOTER */
+.footer{
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    justify-content: center;
+    font-family: var(--FF);
+    background-color: var(--SECONDARY-COLOR);
+    color: var(--FONT-COLOR);
+}
+
+.footer__socials{
+    font-size: 1.5rem;
+}
+
+.footer__icons{
+    color: var(--FONT-COLOR);
+    text-decoration: none;
 }

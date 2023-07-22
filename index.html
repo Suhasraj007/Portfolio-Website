@@ -12,8 +12,9 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="icon" href="img/logo_1000x1000.jpg" type="image/x-icon" />
 
-    <script defer src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <!-- <script defer src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script> -->
     <script defer src="js/main.js"></script>
+    <script defer src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 
 <body>
@@ -30,15 +31,15 @@
 
             <nav class="header__nav" aria-label="primary-navigation">
                 <ul class="header__nav--list">
-                    <li class="header__nav--items"><a href="">HOME</a></li>
+                    <li class="header__nav--items"><a href="#">HOME</a></li>
                     <li id="about" class="header__nav--items">
-                        <a href=""><span class="nowrap">ABOUT ME</span></a>
+                        <a href="#aboutMe"><span class="nowrap">ABOUT ME</span></a>
                     </li>
                     <li id="projects" class="header__nav--items">
-                        <a href="">PROJECTS</a>
+                        <a href="#project">PROJECTS</a>
                     </li>
                     <li class="header__nav--items">
-                        <a href=""><span class="nowrap">CONTACT ME</span></a>
+                        <a href="#contact"><span class="nowrap">CONTACT ME</span></a>
                     </li>
                 </ul>
             </nav>
@@ -48,42 +49,42 @@
             <ul class="header__animate--container">
                 <div class="header__animate">
                     <li class="header__animate--head">Smart Home System</li>
-                    <li class="header__animate--desc">An Iot System</li>
+                    <li class="header__animate--desc">An Iot Application</li>
                     <li class="header__animate--desc">
-                        automatically detects and estinguishes fire and smoke
+                        Automatically detects and extinguishes fire and smoke
                     </li>
                     <li class="header__animate--desc">
-                        Sends an alert to user when fire is detected
+                        Sends an alert to user when fire or smoke is detected
                     </li>
-                    <a href="">Know more ></a>
+                    <a href="#project">Know more ></a>
                 </div>
                 <div class="header__animate">
                     <li class="header__animate--head">Pet Boarding System</li>
-                    <li class="header__animate--desc">A full stack website</li>
+                    <li class="header__animate--desc">A Full Stack Application</li>
                     <li class="header__animate--desc">
-                        allows users to signup and login
+                        Allows Users To Signup and Login
                     </li>
                     <li class="header__animate--desc">
-                        allows users to book a pet boarding service
+                        Allows Users To Book A Pet Service
                     </li>
-                    <a href="">know more ></a>
+                    <a href="#project">know more ></a>
                 </div>
                 <div class="header__animate">
                     <li class="header__animate--head">Portfolio website</li>
                     <li class="header__animate--desc">A front end application</li>
-                    <li class="header__animate--desc">Portfolio website about me</li>
+                    <li class="header__animate--desc">Briefly describes about myself, my projects and my achievements</li>
                     <li class="header__animate--desc">
                         built using html css and javascript
                     </li>
-                    <a href="">know more ></a>
+                    <a href="#project">know more ></a>
                 </div>
             </ul>
         </div>
 
         <div class="header__bg--container">
             <div class="header__text">
-                <p>I'm Suhas an enthusiatic coder and developer</p>
-                <p>hoping to achieve some great things in my life.</p>
+                <p>An enthusiatic programmer and developer</p>
+                <p>Intrested to learn and explore multiple domains.</p>
                 <span id="element"></span><span class="text__cursor">|</span>
             </div>
             <figure class="header__bg">
@@ -92,8 +93,9 @@
             </figure>
         </div>
     </header>
-    <main>
-        <article class="main__container">
+
+    <main class="main">
+        <article id="aboutMe" class="about">
             <div class="about__photo--container">
                 <section class="about__photo--section">
                     <h2>ABOUT ME</h2>
@@ -102,100 +104,119 @@
                         <figcaption class="offscreen">Im suhas</figcaption>
                     </figure>
                     <p>
-                        Im a dedicated enthusiastic Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit. Natus iure rerum commodi porro
-                        tempore temporibus, mollitia nobis suscipit repudiandae delectus,
-                        ratione, adipisci deleniti in vero iusto incidunt quia totam
-                        optio.
+                       I am a highly motivated and passionate developer with a keen eye for creativity and innovation. With a strong academic background and hands-on experience, I thrive on bringing ideas to life through my work. My mission is to bridge the gap between imagination and reality, crafting meaningful and impactful solutions.
                     </p>
                     <p>
-                        <a href="" download="" target="_blank">MY RESUME</a>
+                        <a class= "about__resume" href="" download="" target="_blank">MY RESUME</a>
                     </p>
                 </section>
             </div>
             <div class="about__info--container">
                 <section>
-                    <h2>EDUCATION</h2>
+                    <h3 class="large">EDUCATION</h3>
                     <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut
-                        tenetur ullam blanditiis at eveniet nobis eligendi dolores ducimus
-                        sit, harum odit rem quisquam atque quo inventore, omnis quibusdam
-                        ipsum perferendis. officia repellendus, debitis ut esse eligendi.
+                        <h4 class="inline">SSLC - </h4>
+                        <span>St. Joseph's High School</span>
+                        <p> Percentage: 94%</p>
+                        <h4 class="inline">12th - </h4>
+                        <span>Spurthy PU College</span>
+                        <p> Percentage: 91%</p>
+                        <h4 class="inline">B.Tech - </h4>
+                        <span>M S Ramaiah University Of Applied Sciences</span>
+                        <p>CGPA: 9.43</p>
+
                     </p>
-                    <h2>SKILL SETS</h2>
+                    <h3 class="large">SKILL SETS</h3>
                     <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                        Voluptatem natus obcaecati mollitia inventore accusamus minus
-                        perspiciatis quis provident voluptas consectetur, earum quos
-                        nesciunt ducimus! Asperiores quaerat aspernatur harum sapiente
-                        nulla!
-                    </p>
-                    <h2>GOALS</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
-                        magnam doloremque architecto laborum in et tempore ipsam repellat
-                        sit asperiores voluptate magni nam inventore optio ea blanditiis,
-                        corporis, deserunt voluptatibus!
+                        <h4 class="inline">Programming Languages - </h4>
+                        <span>Java, C, Python</span>
+                        <p>Good Understanding Of Object Oriented Programming, Data Structures And Algorithms.</p>
+                        <h4 class="inline">Front End Development - </h4>
+                        <span>HTML, CSS, JAVASCRIPT</span>
+                        <p></p>
+                        <h4 class="inline">Back End Development - </h4>
+                        <span>Node JS, Express JS, MongoDB, MySQL.</span>
+                        <p></p>
+                        <h4 class="inline">Internet Of Things - </h4>
+                        <span>Arduino Programming, Arduino Uno, ESP32, Blynk</span>
                     </p>
                 </section>
             </div>
         </article>
-        <div class="project__container">
+        <article id="project" class="project__container">
             <section class="project">
                 <h2>PROJECTS</h2>
                 <div class="flash__cards">
-                    <div class="project__item">
+                    <div id = "smartHome" class="project__item">
                         <h2>Smart home system</h2>
-                        <p>An Iot System</p>
-                        <p>
-                            automatically detects and estinguishes fire and smoke
-                        </p>
-                        <p>
-                            Sends an alert to user when fire is detected
-                        </p>
+                        <p>An Iot Application</p>
+                        <p>Uses flame and gas sensors to detect and extinguish fire and smoke in the house</p>
+                        <p>Senses temperature and humidity and uploads it to blynk server for the user to monitor it.</p>
                         <div class="project__footer">
-                            <a href="">Know more ></a>
+                            <a href="">Know More -- </a>
+                            <a href=""><span class="fa fa-github"></span></a>
                         </div>
                     </div>
-                    <div class="project__item">
+                    <div id = "petBoarding" class="project__item">
                         <h2>Pet boarding system</h2>
-                        <p>A full stack website</p>
-                        <p>
-                            allows users to signup and login
-                        </p>
-                        <p>
-                            allows users to book a pet boarding service
-                        </p>
+                        <p>A full stack application</p>
+                        <p>The frontend of the application is built using HTML and CSS to provide GUI for the user.</p>
+                        <p>The Backend is bulit using Node JS, Express JS and Mongo DB to store and authenticate user and booking information.</p>
                         <div class="project__footer">
-                            <a href="">Know more ></a>
+                            <a href="">Link | </a>
+                            <a href=""><span class="fa fa-github"></span></a>
                         </div>
                     </div>
-                    <div class="project__item">
+                    <div id = "portfolio" class="project__item">
                         <h2>Portfolio Website</h2>
                         <p>A front end application</p>
-                        <p>
-                            Portfolio website about me
-                        </p>
-                        <p>
-                            built using html css and javascript
-                        </p>
+                        <p>Portfolio website which showcases my skills, accomplishments, and expertise to a broader audience.</p>
+                        <p>Built using HTML, CSS and JAVASCRIPT which purely runs on the client side.</p>
                         <div class="project__footer">
-                            <a href="">Know more ></a>
+                            <a href="#">Link | </a>
+                            <a href=""><span class="fa fa-github"></span></a>
                         </div>
                     </div>
                 </div>
             </section>
-            <div class="left__arrow">&lt;</div>
-            <div class="right__arrow">&gt;</div>
-            <div class="scroll__animation">
-                <div class="circles"></div>
-                <div class="circles"></div>
-                <div class="circles"></div>
-            </div>
-        </div>
+        </article>
+
+        <article id="contact" class="contact__container">
+            <section class="contact">
+                <h2 class="contact__heading">Contact me</h2>
+                <p class="contact__info">I'd really like to hear from you!</p>
+
+                <form action="https://formsubmit.co/3a792c1a2c4edb3f889bb84b713f68f1" method="POST" class="contact__form">
+                        <p class="contact__tiles">
+                            <label class="contact__tiles--desc" for="Name">Name:</label>
+                            <input class="contact__tiles--input" type="text" name="Name" id="Name" placeholder="Your Name..." autocomplete="on" required>
+                        </p>
+                        <p class="contact__tiles">
+                            <label class="contact__tiles--desc" for="Email">Email:</label>
+                            <input class="contact__tiles--input" type="email" name="Email" id="Email" placeholder="Your Email..." autocomplete="on" required>
+                        </p>
+                        <p class="contact__tiles">
+                            <label class="contact__tiles--desc" for="message">Your Message:</label>
+                            <textarea class="contact__tiles--input" name="message" id="message" cols="30" rows="5"
+                            placeholder="Type your message here"></textarea>
+                        </p>
+                        <p class="contact__btn--container">
+                        <button id = "sendMail" class = "contact__btn" type="submit">Submit</button>
+                        <button class = "contact__btn" type="reset">Reset</button>
+                        </p>
+                </form>
+            </section>
+        </article>
     </main>
-    <footer>
-        <nav aria-label="secondary-navigation"></nav>
+
+    <footer class="footer">
+        <h2 class="footer__heading">Connect with me</h2>
+        <nav aria-label="secondary-navigation" class="footer__socials">
+            <a target="_blank" class="footer__icons" href="https://github.com/Suhasraj007"><span class="fa fa-github"> |</span></a>
+            <a target="_blank" class="footer__icons" href="https://www.linkedin.com/in/suhas-s-06b3b1213/"><span class="fa fa-linkedin"> |</span></a>
+            <a target="_blank" class="footer__icons" href="mailto:rajsuhas780@gmail.com"><span class="fa fa-google"> |</span></a>
+            <a href="#" class="footer__icons totop">^</a>
+        </nav>
     </footer>
 </body>
 
