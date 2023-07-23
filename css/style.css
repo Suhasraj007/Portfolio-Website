@@ -465,3 +465,45 @@ body {
     color: var(--FONT-COLOR);
     text-decoration: none;
 }
+
+/* RESPONSIVE */
+@media screen and (max-width: 700px) {
+    .header__nav--container{
+        position: relative;
+    }
+    .header__nav--list{
+        font-size: 0.8rem;
+        gap: 10px;
+    }
+    .header__text{
+        font-size: 1.5rem;
+    }
+    .header__project--extender{
+        display: none;
+    }
+    .about{
+        font-size: 0.8rem;
+    }
+    .about__info--container{
+        margin-left: 0px;
+    }
+    .about__photo--section{
+        margin-left: 10px;
+    }
+    .project{
+        padding-right:0px;
+    }
+    .project__container{
+        overflow: hidden;
+    }
+    .flash__cards{
+        flex-direction: column;
+    }
+    .project__item{
+        width: 80%;
+        height: 400px;
+    }
+    .contact__form{
+        width:80%;
+    }
+}

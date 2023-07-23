@@ -50,7 +50,10 @@ const initApp = () => {
   const view = document.querySelector(".header__project--extender");
 
   project.addEventListener("mouseover", (event) => {
-    view.style.display = "block";
+    let width = screen.width;
+    if (width > 700) {
+      view.style.display = "block";
+    }
   });
 
   view.addEventListener("mouseout", (event) => {
