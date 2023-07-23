@@ -469,7 +469,7 @@ body {
 /* RESPONSIVE */
 @media screen and (max-width: 700px) {
     .header{
-        min-height: 90vh;
+        min-height: 93vh;
     }
     .header__nav--container{
         position: relative;
