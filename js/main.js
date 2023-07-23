@@ -110,7 +110,7 @@ const initApp = () => {
   document.addEventListener("scroll", (event) => {
     lastKnownScrollPosition = window.scrollY;
 
-    if (lastKnownScrollPosition > 730) {
+    if (lastKnownScrollPosition > 730 && screen.width > 700) {
       doSomething();
     } else {
       revert();
