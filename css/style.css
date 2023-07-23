@@ -468,6 +468,9 @@ body {
 
 /* RESPONSIVE */
 @media screen and (max-width: 700px) {
+    .header{
+        min-height: 98vh;
+    }
     .header__nav--container{
         position: relative;
     }
