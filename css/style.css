@@ -332,9 +332,49 @@ body {
     display: flex;
     flex-direction: column;
     width: 60%;
-    margin:3%;
+    height: 450px;
     justify-content: space-between;
+    margin:3%;
+    background-color: transparent;
+    perspective: 1000px;
 }
+
+.project__item--inner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 1.5s;
+    transform-style: preserve-3d;
+}
+
+.project__item:hover .project__item--inner {
+    transform: rotateY(180deg);
+}
+
+.project__flip--front, .project__flip--back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  
+  .project__flip--front {
+    background-color: #bbb;
+  }
+  
+  .project__flip--back {
+    background-color: #bbb;
+    transform: rotateY(180deg);
+  }
+
+  .project__flip--back ul{
+    list-style: none;
+  }
 
 .project__item p{
     padding: 10px;
