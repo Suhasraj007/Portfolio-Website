@@ -112,9 +112,20 @@ const initApp = () => {
 
     if (lastKnownScrollPosition > 730 && screen.width > 700) {
       doSomething();
-    } else {
+    } else if (lastKnownScrollPosition < 730 && screen.width > 700) {
       revert();
     }
+  });
+
+  const toggleButton = document.getElementsByClassName('header__nav--toggle')[0];
+  const headerNavList = document.getElementsByClassName('header__nav--list')[0];
+
+  toggleButton.addEventListener('click', () => {
+    headerNavList.classList.toggle('active');
+  });
+
+  headerNavList.addEventListener('click', () => {
+    headerNavList.classList.toggle('active');
   });
   
 };

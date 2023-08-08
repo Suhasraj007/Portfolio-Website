@@ -115,6 +115,24 @@ body {
     cursor: pointer;
 }
 
+.header__nav--toggle{
+    position: fixed;
+    top: 1.3rem;
+    right: 1.5rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.header__nav--toggle .bar{
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
 .header__nav {
     width: 60%;
     margin: auto;
@@ -469,14 +487,50 @@ body {
 /* RESPONSIVE */
 @media screen and (max-width: 700px) {
     .header{
-        min-height: 93vh;
+        min-height: 100vh;
     }
     .header__nav--container{
-        position: relative;
+        background-color: var(--SECONDARY-COLOR);
+        position: fixed;
+    }
+    .header__logo{
+        width: 12%;
+    }
+    .header__title{
+        justify-content: flex-start;
+        padding: 10px;
+        margin-top: 0px;
+        background-color: var(--SECONDARY-COLOR);
+    }
+    .header__title--line{
+        font-size: 1.5rem;
+    }
+    .header__nav{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+    }
+    .header__nav--toggle{
+        display: flex;
     }
     .header__nav--list{
+        display: none;
+        flex-direction: column;
         font-size: 0.8rem;
-        gap: 10px;
+        gap: 12px;
+        width: 100%;
+        background-color: var(--SECONDARY-COLOR);
+    }
+    .header__nav--list.active{
+        display: flex;
+    }
+    .header__nav--items{
+        border-bottom: 1px solid var(--FONT-COLOR);
+    }
+    .header__nav--list li{
+        text-align: center;
+        margin: 1px;
     }
     .header__text{
         font-size: 1.5rem;
@@ -486,7 +540,7 @@ body {
     }
     .about__info--container{
         margin-left: 0px;
-        padding: 5px;
+        padding: 10px;
     }
     .about__photo--section{
         margin-left: 10px;
@@ -497,6 +551,9 @@ body {
     .project__item{
         width: 80%;
         height: 420px;
+    }
+    .contact{
+        padding-top: 50px;
     }
     .contact__form{
         width:80%;
