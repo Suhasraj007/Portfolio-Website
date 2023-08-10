@@ -487,7 +487,7 @@ body {
 /* RESPONSIVE */
 @media screen and (max-width: 700px) {
     .header{
-        min-height: 100vh;
+        min-height: 93vh;
     }
     .header__nav--container{
         background-color: var(--SECONDARY-COLOR);
