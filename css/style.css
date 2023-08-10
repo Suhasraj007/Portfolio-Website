@@ -180,9 +180,11 @@ body {
     z-index: -1;
     overflow: hidden;
     height: 100%;
+    width: 100%;
 }
 
 .header__bg--img {
+    width: 100%;
     height: 100%;
     transition: transform .5s ease-in-out;
 }
