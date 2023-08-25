@@ -14,5 +14,5 @@
 * Hosting
 
 # Live 
-https://suhasraj007.github.io/Portfolio-Website/
-https://chic-kitten-21da95.netlify.app/
+* https://suhasraj007.github.io/Portfolio-Website/
+* https://chic-kitten-21da95.netlify.app/
