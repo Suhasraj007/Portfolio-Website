@@ -6,12 +6,6 @@ document.addEventListener("readystatechange", (event) => {
 });
 
 const initApp = () => {
-  // var typed = new Typed("#element", {
-  //   strings: ["Fornt end developer", "Back end developer", "Java Programmer"],
-  //   typeSpeed: 50,
-  //   loop: true,
-  //   loopCount: Infinity,
-  // });
 
   const textArea = document.getElementById("element");
   const animateText = [
@@ -19,33 +13,60 @@ const initApp = () => {
     "Back end developer",
     "Java Programmer",
   ];
-  let text = 0;
-  trial(text);
 
-  setInterval(() => {
-    text = (text + 1) % animateText.length;
+  let animationInterval;
+  let animateTimeout = [];
+  let reanimateTimeout = [];
+
+  function startAnimation() {
+    let text = 0;
     trial(text);
-  }, (animateText[text].length + 1.1) * 100);
-
-  function trial(text) {
-    for (let index = 0; index < animateText[text].length; index++) {
-      animate(index);
-    }
-
-    function animate(index) {
-      setTimeout(() => {
-        textArea.textContent += `${animateText[text].charAt(index)}`;
-      }, index * 100);
-      reanimate();
-    }
-
-    function reanimate() {
-      setTimeout(() => {
-        textArea.textContent = " ";
-      }, (animateText[text].length + 1) * 100);
+  
+    animationInterval = setInterval(() => {
+      text = (text + 1) % animateText.length;
+      trial(text);
+    }, (animateText[text].length + 1.1) * 100);
+  
+    function trial(text) {
+      for (let index = 0; index < animateText[text].length; index++) {
+        animate(index);
+      }
+  
+      function animate(index) {
+        animateTimeout[index] = setTimeout(() => {
+          textArea.textContent += `${animateText[text].charAt(index)}`;
+        }, index * 100);
+        reanimate(index);
+      }
+  
+      function reanimate(index) {
+        reanimateTimeout[index] = setTimeout(() => {
+          textArea.textContent = " ";
+        }, (animateText[text].length + 1) * 100);
+      }
     }
   }
 
+  function stopAnimation() {
+    clearInterval(animationInterval);
+    animateTimeout.forEach((ele) => clearTimeout(ele));
+    reanimateTimeout.forEach((ele) => clearTimeout(ele));
+    textArea.textContent = " ";
+  }
+
+  function handleVisibilityChange() {
+    if (document.visibilityState === "visible") {
+      startAnimation();
+    } else {
+      stopAnimation();
+    }
+  }
+  
+  // Listen for visibility change events
+  document.addEventListener("visibilitychange", handleVisibilityChange);
+
+  startAnimation();
+  
   const project = document.querySelector("#projects");
   const view = document.querySelector(".header__project--extender");
 
