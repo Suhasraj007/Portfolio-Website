@@ -6,7 +6,6 @@ document.addEventListener("readystatechange", (event) => {
 });
 
 const initApp = () => {
-
   const textArea = document.getElementById("element");
   const animateText = [
     "Front end developer",
@@ -34,7 +33,7 @@ const initApp = () => {
   
       function animate(index) {
         animateTimeout[index] = setTimeout(() => {
-          textArea.textContent += `${animateText[text].charAt(index)}`;
+          textArea.textContent = `${textArea.textContent}${animateText[text].charAt(index)}`;
         }, index * 100);
         reanimate(index);
       }
@@ -55,7 +54,7 @@ const initApp = () => {
   }
 
   function handleVisibilityChange() {
-    if (document.visibilityState === "visible") {
+    if (window.document.visibilityState === "visible") {
       startAnimation();
     } else {
       stopAnimation();
@@ -66,7 +65,7 @@ const initApp = () => {
   document.addEventListener("visibilitychange", handleVisibilityChange);
 
   startAnimation();
-  
+
   const project = document.querySelector("#projects");
   const view = document.querySelector(".header__project--extender");
 
@@ -138,15 +137,16 @@ const initApp = () => {
     }
   });
 
-  const toggleButton = document.getElementsByClassName('header__nav--toggle')[0];
-  const headerNavList = document.getElementsByClassName('header__nav--list')[0];
+  const toggleButton = document.getElementsByClassName(
+    "header__nav--toggle"
+  )[0];
+  const headerNavList = document.getElementsByClassName("header__nav--list")[0];
 
-  toggleButton.addEventListener('click', () => {
-    headerNavList.classList.toggle('active');
+  toggleButton.addEventListener("click", () => {
+    headerNavList.classList.toggle("active");
   });
 
-  headerNavList.addEventListener('click', () => {
-    headerNavList.classList.toggle('active');
+  headerNavList.addEventListener("click", () => {
+    headerNavList.classList.toggle("active");
   });
-  
 };
