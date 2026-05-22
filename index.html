@@ -1,284 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="author" content="Suhas" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="This is my portfolio website" />
-    <title>Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suhas S — Backend Engineer</title>
+<meta name="description" content="Suhas S — Backend Engineer @ Freo. I build scalable, low-latency systems that move money fast. Java, Spring Boot, Microservices, Kafka, Redis, AWS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08090d;
+    --bg-2:#0c0e14;
+    --glass:rgba(20,23,32,.55);
+    --glass-2:rgba(28,32,44,.5);
+    --line:rgba(255,255,255,.08);
+    --line-2:rgba(255,255,255,.14);
+    --txt:#aab2c2;
+    --txt-dim:#737d8f;
+    --white:#f2f5fa;
+    --g1:#4ade80;
+    --g2:#22d3ee;
+    --g3:#818cf8;
+    --grad:linear-gradient(120deg,var(--g1),var(--g2) 60%,var(--g3));
+    --grad-soft:linear-gradient(120deg,rgba(74,222,128,.16),rgba(34,211,238,.16));
+    --disp:'Bricolage Grotesque',serif;
+    --body:'Hanken Grotesk',-apple-system,sans-serif;
+    --mono:'JetBrains Mono',monospace;
+    --maxw:1120px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--txt);font-family:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative}
+  .aurora{position:fixed;inset:0;z-index:-3;overflow:hidden;background:var(--bg)}
+  .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;will-change:transform}
+  .b1{width:560px;height:560px;background:radial-gradient(circle,#0f7a52,transparent 70%);top:-160px;left:-120px;animation:drift1 22s ease-in-out infinite}
+  .b2{width:520px;height:520px;background:radial-gradient(circle,#0e5d76,transparent 70%);top:10%;right:-160px;animation:drift2 26s ease-in-out infinite}
+  .b3{width:480px;height:480px;background:radial-gradient(circle,#2a2f7a,transparent 70%);bottom:-160px;left:30%;animation:drift3 30s ease-in-out infinite}
+  @keyframes drift1{50%{transform:translate(120px,80px) scale(1.15)}}
+  @keyframes drift2{50%{transform:translate(-100px,120px) scale(1.1)}}
+  @keyframes drift3{50%{transform:translate(80px,-90px) scale(1.2)}}
+  .grain{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .cursor-glow{position:fixed;width:520px;height:520px;border-radius:50%;z-index:-1;pointer-events:none;background:radial-gradient(circle,rgba(74,222,128,.10),rgba(34,211,238,.05) 40%,transparent 70%);transform:translate(-50%,-50%);transition:opacity .4s;opacity:0}
+  ::selection{background:var(--g1);color:#04140c}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
 
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" href="img/logo_1000x1000.jpg" type="image/x-icon" />
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:.3s}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;margin:0 auto;max-width:var(--maxw);padding:0 28px;transition:.3s}
+  nav.scrolled .nav-inner{height:60px}
+  nav.scrolled{background:rgba(8,9,13,.7);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  .brand{font-family:var(--disp);font-weight:800;font-size:21px;color:var(--white);letter-spacing:-.5px}
+  .brand span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links a{font-size:15px;color:var(--txt-dim);transition:.2s;font-weight:500}
+  .nav-links a:hover{color:var(--white)}
+  .nav-cta{padding:9px 20px;border-radius:30px;background:var(--grad);color:#04140c !important;font-weight:600;transition:.25s}
+  .nav-cta:hover{box-shadow:0 8px 26px -8px var(--g2);transform:translateY(-1px)}
+  .burger{display:none;background:none;border:0;color:var(--white);font-size:26px;cursor:pointer}
 
-    <script defer src="js/main.js"></script>
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  section{padding:110px 0;scroll-margin-top:70px;position:relative}
+  .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:3px;text-transform:uppercase;color:var(--g1);margin-bottom:16px}
+  .sec-title{font-family:var(--disp);font-size:clamp(30px,5vw,50px);font-weight:700;color:var(--white);letter-spacing:-1.4px;line-height:1.05}
+
+  .hero{min-height:100vh;display:flex;align-items:center;padding-top:72px;position:relative}
+  .badge{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:500;color:var(--txt);background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(10px);padding:8px 16px;border-radius:30px;margin-bottom:30px}
+  .badge .pulse{width:8px;height:8px;border-radius:50%;background:var(--g1);box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}70%{box-shadow:0 0 0 9px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+  h1.name{font-family:var(--disp);font-size:clamp(54px,12vw,128px);font-weight:800;line-height:.92;letter-spacing:-4px;color:var(--white);margin-bottom:8px}
+  h1.name .gt{background:var(--grad);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+  @keyframes shine{to{background-position:200% center}}
+  .tagline{font-family:var(--disp);font-size:clamp(20px,3.6vw,34px);font-weight:600;color:var(--txt);letter-spacing:-.8px;max-width:760px;margin-bottom:18px;line-height:1.15}
+  .tagline b{color:var(--white)}
+  .lede{font-size:17px;max-width:560px;color:var(--txt-dim);margin-bottom:40px}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{font-size:15px;font-weight:600;padding:14px 26px;border-radius:32px;transition:.25s;display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line-2);color:var(--white)}
+  .btn .ar{transition:transform .25s}
+  .btn:hover{transform:translateY(-2px);border-color:transparent;background:var(--glass-2)}
+  .btn:hover .ar{transform:translate(3px,-3px)}
+  .btn.primary{background:var(--grad);color:#04140c;border:0}
+  .btn.primary:hover{box-shadow:0 16px 40px -12px var(--g2);background:var(--grad)}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:6px}
+  .stat{background:var(--glass);border:1px solid var(--line);border-radius:20px;padding:30px 24px;backdrop-filter:blur(12px);position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+  .stat::after{content:"";position:absolute;inset:0;background:var(--grad-soft);opacity:0;transition:.3s}
+  .stat:hover{transform:translateY(-5px);border-color:var(--line-2)}
+  .stat:hover::after{opacity:1}
+  .stat .num{font-family:var(--disp);font-size:clamp(30px,4.4vw,46px);font-weight:800;line-height:1;letter-spacing:-2px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;position:relative;z-index:1}
+  .stat .lab{font-size:14px;color:var(--txt-dim);margin-top:10px;position:relative;z-index:1}
+
+  .about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;margin-top:40px;align-items:start}
+  .about p{font-size:17.5px;color:var(--txt);margin-bottom:20px}
+  .about p .hl{color:var(--white);font-weight:600}
+  .about p .gw{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:600}
+  .infocard{background:var(--glass);border:1px solid var(--line);border-radius:20px;overflow:hidden;backdrop-filter:blur(12px)}
+  .inforow{display:flex;justify-content:space-between;gap:14px;padding:16px 22px;border-bottom:1px solid var(--line);font-size:14.5px}
+  .inforow:last-child{border-bottom:0}
+  .inforow .l{color:var(--txt-dim)}
+  .inforow .v{color:var(--white);font-weight:500;text-align:right}
+  .inforow .v .dot{color:var(--g1)}
+
+  .expcard{background:var(--glass);border:1px solid var(--line);border-radius:24px;padding:38px 40px;margin-top:40px;backdrop-filter:blur(12px);position:relative;overflow:hidden}
+  .expcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--grad)}
+  .exp-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px}
+  .exp-head h3{font-family:var(--disp);font-size:25px;color:var(--white);font-weight:700;letter-spacing:-.6px}
+  .exp-head h3 .gw{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .exp-when{font-size:14px;color:var(--txt-dim);font-weight:500}
+  .exp-sub{font-size:14.5px;color:var(--g1);margin:4px 0 26px;font-weight:500}
+  .exp ul{list-style:none;display:grid;gap:15px}
+  .exp li{position:relative;padding-left:30px;color:var(--txt);font-size:16px}
+  .exp li::before{content:"";position:absolute;left:4px;top:11px;width:8px;height:8px;border-radius:50%;background:var(--grad)}
+  .exp li b{color:var(--white);font-weight:600}
+  .exp li .m{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
+
+  .marquee{margin-top:42px;overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .mtrack{display:flex;gap:14px;width:max-content;animation:scroll 32s linear infinite}
+  .marquee:hover .mtrack{animation-play-state:paused}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  .chip{font-size:15px;font-weight:500;color:var(--white);background:var(--glass);border:1px solid var(--line);border-radius:14px;padding:12px 20px;white-space:nowrap;transition:.2s}
+  .chip:hover{border-color:var(--g1);transform:translateY(-3px)}
+  .chip .ic{color:var(--g1);margin-right:8px;font-family:var(--mono);font-size:13px}
+  .skill-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
+  .sg{background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:22px 24px;backdrop-filter:blur(10px);transition:.25s}
+  .sg:hover{transform:translateY(-4px);border-color:var(--line-2)}
+  .sg h4{font-family:var(--mono);font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:var(--g1);margin-bottom:12px}
+  .sg p{font-size:14.5px;color:var(--txt);line-height:1.9}
+
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:40px}
+  .pcard{position:relative;border-radius:22px;padding:1px;background:var(--line);transition:transform .3s}
+  .pcard::before{content:"";position:absolute;inset:0;border-radius:22px;padding:1px;background:var(--grad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s}
+  .pcard:hover{transform:translateY(-7px)}
+  .pcard:hover::before{opacity:1}
+  .pcard-in{background:var(--bg-2);border-radius:21px;padding:30px 30px 28px;height:100%;display:flex;flex-direction:column}
+  .pcard-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+  .pico{width:46px;height:46px;border-radius:13px;background:var(--grad-soft);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:21px}
+  .plinks a{color:var(--txt-dim);font-size:14px;font-weight:500;transition:.2s}
+  .plinks a:hover{color:var(--g1)}
+  .pcard h3{font-family:var(--disp);font-size:22px;color:var(--white);font-weight:700;letter-spacing:-.5px;margin-bottom:10px}
+  .pcard p{font-size:15px;color:var(--txt-dim);flex:1;margin-bottom:20px}
+  .stack{display:flex;flex-wrap:wrap;gap:8px}
+  .stack span{font-size:12.5px;font-weight:500;color:var(--txt);background:var(--glass);border:1px solid var(--line);border-radius:8px;padding:5px 11px}
+
+  .contact{text-align:center;padding-bottom:80px}
+  .contact h2{font-family:var(--disp);font-size:clamp(38px,8vw,80px);font-weight:800;letter-spacing:-3px;line-height:1;margin-bottom:22px;color:var(--white)}
+  .contact h2 .gt{background:var(--grad);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+  .contact p{max-width:520px;margin:0 auto 38px;font-size:17px;color:var(--txt-dim)}
+  .contact .btn-row{justify-content:center}
+  footer{border-top:1px solid var(--line);padding:32px 0 50px;text-align:center;color:var(--txt-dim);font-size:14px}
+  footer .gw{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:600}
+  .fsocials{display:flex;gap:24px;justify-content:center;margin-bottom:18px}
+  .fsocials a{color:var(--txt-dim);font-weight:500;transition:.2s}
+  .fsocials a:hover{color:var(--g1)}
+
+  @media(max-width:920px){.stats{grid-template-columns:repeat(2,1fr)}.about-grid,.proj-grid,.skill-groups{grid-template-columns:1fr}}
+  @media(max-width:680px){
+    .nav-links{display:none}.burger{display:block}
+    .nav-links.open{display:flex;position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:20px;background:var(--bg-2);border-bottom:1px solid var(--line);padding:26px 28px}
+    section{padding:80px 0}.wrap{padding:0 22px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .blob,.mtrack,h1.name .gt,.contact h2 .gt,.pulse{animation:none}
+    .cursor-glow{display:none}html{scroll-behavior:auto}
+  }
+</style>
 </head>
-
 <body>
-    <header class="header">
-        <div class="header__nav--container">
-            <div class="header__title">
-                <figure class="header__logo">
-                    <img class="header__logo--img" src="img/logo_1000x1000.jpg" alt="Logo" width="1000" height="1000"
-                        title="Logo" />
-                    <figcaption class="offscreen">Logo for my name</figcaption>
-                </figure>
-                <h1 class="header__title--line">SUHAS</h1>
-            </div>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div class="cursor-glow" id="cg"></div>
 
-            <a class="header__nav--toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </a>
-            
-            <nav class="header__nav" aria-label="primary-navigation">
-                <ul class="header__nav--list">
-                    <li class="header__nav--items"><a href="#">HOME</a></li>
-                    <li id="about" class="header__nav--items">
-                        <a href="#aboutMe"><span class="nowrap">ABOUT ME</span></a>
-                    </li>
-                    <li id="projects" class="header__nav--items">
-                        <a href="#project">PROJECTS</a>
-                    </li>
-                    <li class="header__nav--items">
-                        <a href="#contact"><span class="nowrap">CONTACT ME</span></a>
-                    </li>
-                </ul>
-            </nav>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">Suhas<span>.</span></a>
+    <div class="nav-links" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+    <button class="burger" id="burger" aria-label="menu">&#8801;</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap reveal in">
+    <span class="badge"><span class="pulse"></span> Open to opportunities &middot; Bengaluru, IN</span>
+    <h1 class="name">Suhas <span class="gt">S</span></h1>
+    <p class="tagline">I build <b>scalable, low-latency systems</b> that move money fast.</p>
+    <p class="lede">Backend Engineer @ Freo with 2.5 years in fintech &mdash; owning the loan-management stack and turning slow, tangled flows into clean, event-driven architecture.</p>
+    <div class="btn-row">
+      <a href="resume.pdf" class="btn primary">View R&eacute;sum&eacute; <span class="ar">&#8599;</span></a>
+      <a href="https://github.com/Suhasraj007" target="_blank" rel="noopener" class="btn">GitHub <span class="ar">&#8599;</span></a>
+      <a href="https://www.linkedin.com/in/suhas-s-06b3b1213/" target="_blank" rel="noopener" class="btn">LinkedIn <span class="ar">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat reveal"><div class="num" data-target="40" data-prefix="&#8377;" data-suffix="L"></div><div class="lab">/month licensing cost saved</div></div>
+      <div class="stat reveal" style="transition-delay:.07s"><div class="num" data-target="3" data-prefix="&#8377;" data-suffix="Cr+"></div><div class="lab">monthly disbursals enabled</div></div>
+      <div class="stat reveal" style="transition-delay:.14s"><div class="num" data-target="90" data-suffix="%"></div><div class="lab">faster dashboard API</div></div>
+      <div class="stat reveal" style="transition-delay:.21s"><div class="num" data-target="75" data-suffix="%"></div><div class="lab">fewer support tickets</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="reveal"><div class="eyebrow">// About</div><h2 class="sec-title">The short version</h2></div>
+    <div class="about-grid">
+      <div class="about reveal">
+        <p>I'm a backend engineer with <span class="hl">2.5 years</span> in fintech, building services that move money reliably and fast. At <span class="hl">Freo</span> I own the <span class="gw">Loan Management System</span> and work across the credit lifecycle &mdash; disbursal, KYC, repayments and payment integrations.</p>
+        <p>My favourite problem is the slow, tangled one. I led the migration of our core LMS from a licensed vendor to <span class="gw">open-source Apache Fineract</span>, designed an event-driven VKYC workflow, and took a hot-path API from <span class="hl">~900 ms to under 100 ms</span>.</p>
+        <p>Off the clock, I'm sharpening <span class="gw">system design</span> and grinding DSA.</p>
+      </div>
+      <div class="reveal" style="transition-delay:.1s">
+        <div class="infocard">
+          <div class="inforow"><span class="l">Role</span><span class="v">Backend Engineer</span></div>
+          <div class="inforow"><span class="l">Company</span><span class="v">Freo</span></div>
+          <div class="inforow"><span class="l">Experience</span><span class="v">2.5 years</span></div>
+          <div class="inforow"><span class="l">Focus</span><span class="v">Fintech &middot; Backend</span></div>
+          <div class="inforow"><span class="l">Base</span><span class="v">Bengaluru, IN</span></div>
+          <div class="inforow"><span class="l">Status</span><span class="v"><span class="dot">&#9679;</span> Open</span></div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="header__project--extender">
-            <ul class="header__animate--container">
-                <div class="header__animate">
-                    <li class="header__animate--head">Smart Home System</li>
-                    <li class="header__animate--desc">An Iot Application</li>
-                    <li class="header__animate--desc">
-                        Automatically detects and extinguishes fire and smoke
-                    </li>
-                    <li class="header__animate--desc">
-                        Sends an alert to user when fire or smoke is detected
-                    </li>
-                    <a href="#project">Know more ></a>
-                </div>
-                <div class="header__animate">
-                    <li class="header__animate--head">Pet Boarding System</li>
-                    <li class="header__animate--desc">A Full Stack Application</li>
-                    <li class="header__animate--desc">
-                        Allows Users To Signup and Login
-                    </li>
-                    <li class="header__animate--desc">
-                        Allows Users To Book A Pet Service
-                    </li>
-                    <a href="#project">know more ></a>
-                </div>
-                <div class="header__animate">
-                    <li class="header__animate--head">Portfolio website</li>
-                    <li class="header__animate--desc">A front end application</li>
-                    <li class="header__animate--desc">Briefly describes about myself, my projects and my achievements
-                    </li>
-                    <li class="header__animate--desc">
-                        built using html css and javascript
-                    </li>
-                    <a href="#project">know more ></a>
-                </div>
-            </ul>
-        </div>
+<section id="experience">
+  <div class="wrap">
+    <div class="reveal"><div class="eyebrow">// Experience</div><h2 class="sec-title">Where I've shipped</h2></div>
+    <div class="expcard exp reveal">
+      <div class="exp-head"><h3>Software Engineer <span class="gw">@ Freo</span></h3><span class="exp-when">Jan 2024 &mdash; Present</span></div>
+      <div class="exp-sub">Backend &middot; Bengaluru, India</div>
+      <ul>
+        <li>Led migration of the core <b>Loan Management System</b> from proprietary Finflux to open-source <b>Apache Fineract</b> via a shadow-mode, transformer-based architecture &mdash; saving <span class="m">~&#8377;40L/month</span> with zero downtime.</li>
+        <li>Delivered end-to-end integrations for <b>2 lending partners</b> (onboarding &rarr; foreclosure), enabling <span class="m">&#8377;3Cr+</span> in monthly disbursals with fault-tolerant handling.</li>
+        <li>Architected an <b>event-driven VKYC</b> workflow with Kafka async processing and the Strategy pattern, retaining a partner disbursing <span class="m">&#8377;1Cr+/month</span>.</li>
+        <li>Cut the customer data API latency by <span class="m">~90%</span> (900 ms &rarr; &lt;100 ms) &mdash; killing an N+1 pattern, adding <b>Redis caching</b> and parallel fetches.</li>
+        <li>Engineered <b>Repayments V2</b> with idempotent retry and automated reconciliation, reducing repayment support tickets by <span class="m">~75%</span>.</li>
+        <li>Integrated the <b>PayU</b> gateway (~33% lower UPI fees than Razorpay) and shipped a repayment-time cross-sell module driving <span class="m">~&#8377;25L/month</span> in revenue.</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-        <div class="header__bg--container">
-            <div class="header__text">
-                <p>An enthusiatic programmer and developer</p>
-                <p>Intrested to learn and explore multiple domains.</p>
-                <span id="element"></span><span class="text__cursor">|</span>
-            </div>
-            <figure class="header__bg">
-                <img class="header__bg--img" src="img/main_bg_910x644.jpg" width="910" height="644" />
-                <figcaption class="offscreen">background-image for header</figcaption>
-            </figure>
-        </div>
-    </header>
+<section id="skills">
+  <div class="wrap">
+    <div class="reveal"><div class="eyebrow">// Skills</div><h2 class="sec-title">The stack</h2></div>
+  </div>
+  <div class="marquee reveal">
+    <div class="mtrack">
+      <span class="chip"><span class="ic">{}</span>Java</span><span class="chip"><span class="ic">{}</span>Spring Boot</span><span class="chip"><span class="ic">{}</span>Microservices</span><span class="chip"><span class="ic">{}</span>Apache Kafka</span><span class="chip"><span class="ic">{}</span>Redis</span><span class="chip"><span class="ic">{}</span>PostgreSQL</span><span class="chip"><span class="ic">{}</span>MySQL</span><span class="chip"><span class="ic">{}</span>DynamoDB</span><span class="chip"><span class="ic">{}</span>AWS</span><span class="chip"><span class="ic">{}</span>REST APIs</span><span class="chip"><span class="ic">{}</span>System Design</span><span class="chip"><span class="ic">{}</span>Python</span>
+      <span class="chip"><span class="ic">{}</span>Java</span><span class="chip"><span class="ic">{}</span>Spring Boot</span><span class="chip"><span class="ic">{}</span>Microservices</span><span class="chip"><span class="ic">{}</span>Apache Kafka</span><span class="chip"><span class="ic">{}</span>Redis</span><span class="chip"><span class="ic">{}</span>PostgreSQL</span><span class="chip"><span class="ic">{}</span>MySQL</span><span class="chip"><span class="ic">{}</span>DynamoDB</span><span class="chip"><span class="ic">{}</span>AWS</span><span class="chip"><span class="ic">{}</span>REST APIs</span><span class="chip"><span class="ic">{}</span>System Design</span><span class="chip"><span class="ic">{}</span>Python</span>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="skill-groups">
+      <div class="sg reveal"><h4>Core</h4><p>Java &middot; SQL &middot; Python &middot; Spring Boot &middot; Microservices &middot; REST APIs</p></div>
+      <div class="sg reveal" style="transition-delay:.07s"><h4>Data &amp; Messaging</h4><p>MySQL &middot; PostgreSQL &middot; Redis &middot; DynamoDB &middot; Aurora RDS &middot; Kafka &middot; SQS</p></div>
+      <div class="sg reveal" style="transition-delay:.14s"><h4>Cloud &amp; Concepts</h4><p>AWS (ECS, S3, Lambda, API GW) &middot; CI/CD &middot; System Design &middot; Event-Driven &middot; Caching &middot; DSA</p></div>
+    </div>
+  </div>
+</section>
 
-    <main class="main">
-        <article id="aboutMe" class="about">
-            <div class="about__photo--container">
-                <section class="about__photo--section">
-                    <h2>ABOUT ME</h2>
-                    <figure class="about__photo">
-                        <img src="img/suhas_1477x1600.jpg" alt="my photo" width="1477" height="1600" />
-                        <figcaption class="offscreen">Im suhas</figcaption>
-                    </figure>
-                    <p>
-                        I am a highly motivated and passionate developer with a keen eye for creativity and innovation.
-                        With a strong academic background and hands-on experience, I thrive on bringing ideas to life
-                        through my work. My mission is to bridge the gap between imagination and reality, crafting
-                        meaningful and impactful solutions.
-                    </p>
-                    <p>
-                        <a class="about__resume" href="https://drive.google.com/file/d/19oGuurQCPkbyFqZ7vgUQrmKtt9uLVcl7/view?usp=drive_link" target="_blank">MY RESUME</a>
-                    </p>
-                </section>
-            </div>
-            <div class="about__info--container">
-                <section>
-                    <h3 class="large">EDUCATION</h3>
-                    <p>
-                    <h4 class="inline">SSLC - </h4>
-                    <span>St. Joseph's High School</span>
-                    <p> Percentage: 94%</p>
-                    <h4 class="inline">12th - </h4>
-                    <span>Spurthy PU College</span>
-                    <p> Percentage: 91%</p>
-                    <h4 class="inline">B.Tech - </h4>
-                    <span>M S Ramaiah University Of Applied Sciences</span>
-                    <p>CGPA: 9.43</p>
+<section id="projects">
+  <div class="wrap">
+    <div class="reveal"><div class="eyebrow">// Projects</div><h2 class="sec-title">Things I've built</h2></div>
+    <div class="proj-grid">
+      <div class="pcard reveal"><div class="pcard-in">
+        <div class="pcard-top"><div class="pico">&#128062;</div><div class="plinks"><a href="https://github.com/Suhasraj007/Pet_Boarding_System" target="_blank" rel="noopener">Code &#8599;</a></div></div>
+        <h3>Pet Boarding System</h3>
+        <p>A full-stack booking platform for pet-boarding services &mdash; RESTful APIs, CRUD booking management and user authentication on a NoSQL data model.</p>
+        <div class="stack"><span>Node.js</span><span>Express</span><span>MongoDB</span><span>JavaScript</span></div>
+      </div></div>
+      <div class="pcard reveal" style="transition-delay:.06s"><div class="pcard-in">
+        <div class="pcard-top"><div class="pico">&#127909;</div><div class="plinks"><a href="https://github.com/Suhasraj007/MovieRetriver" target="_blank" rel="noopener">Code &#8599;</a></div></div>
+        <h3>Movie Retriever</h3>
+        <p>An async movie-search app pulling live data from the OMDB API &mdash; ratings, plot and cast &mdash; with sub-second responses and ~40% faster loads via AJAX.</p>
+        <div class="stack"><span>JavaScript</span><span>AJAX</span><span>OMDB API</span><span>HTML/CSS</span></div>
+      </div></div>
+      <div class="pcard reveal" style="transition-delay:.12s"><div class="pcard-in">
+        <div class="pcard-top"><div class="pico">&#127782;</div><div class="plinks"><a href="https://github.com/Suhasraj007" target="_blank" rel="noopener">Code &#8599;</a></div></div>
+        <h3>Weather Prediction</h3>
+        <p>An ML model predicting temperature from humidity and cloud cover, comparing linear regression, random forest and decision-tree regressors.</p>
+        <div class="stack"><span>Python</span><span>scikit-learn</span><span>ML</span></div>
+      </div></div>
+      <div class="pcard reveal" style="transition-delay:.18s"><div class="pcard-in">
+        <div class="pcard-top"><div class="pico">&#127968;</div><div class="plinks"><a href="https://github.com/Suhasraj007" target="_blank" rel="noopener">Code &#8599;</a></div></div>
+        <h3>Smart Home System</h3>
+        <p>An IoT system for home safety &mdash; smoke and fire detection with alarms, plus real-time temperature and humidity monitoring on Arduino.</p>
+        <div class="stack"><span>Arduino</span><span>IoT</span><span>Embedded C</span></div>
+      </div></div>
+    </div>
+  </div>
+</section>
 
-                    </p>
-                    <h3 class="large">SKILL SETS</h3>
-                    <p>
-                    <h4 class="inline">Programming Languages - </h4>
-                    <span>Java, C, Python</span>
-                    <p>Good Understanding Of Object Oriented Programming, Data Structures And Algorithms.</p>
-                    <h4 class="inline">Front End Development - </h4>
-                    <span>HTML, CSS, JAVASCRIPT</span>
-                    <p></p>
-                    <h4 class="inline">Back End Development - </h4>
-                    <span>Node JS, Express JS, MongoDB, MySQL.</span>
-                    <p></p>
-                    <h4 class="inline">Internet Of Things - </h4>
-                    <span>Arduino Programming, Arduino Uno, ESP32, Blynk</span>
-                    </p>
-                </section>
-            </div>
-        </article>
-        <article id="project" class="project__container">
-            <section class="project">
-                <h2>PROJECTS</h2>
-                <div class="flash__cards">
-                    <div id="smartHome" class="project__item">
-                        <h2>Smart home system</h2>
-                        <div class="project__item--inner">
-                            <div class="project__flip--front">
-                                <p>An Iot Application</p>
-                                <p>Uses flame and gas sensors to detect and extinguish fire and smoke in the house</p>
-                                <p>Senses temperature and humidity and uploads it to blynk server for the user to
-                                    monitor it.</p>
-                            </div>
-                            <div class="project__flip--back">
-                                <h3>Tools and Technologies used</h3>
-                                <ul>
-                                    <li>Arduino IDE</li>
-                                    <li>Sensors : DHT11, MQ2, Flame Sensor</li>
-                                    <li>Microprocessor : ESP8266</li>
-                                    <li>Actuators : RGB Led, Exhaust Fan, Buzzer</li>
-                                    <li>Server : Blynk</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="project__footer">
-                            <span>Know More -- </span>
-                            <a href="https://github.com/Suhasraj007/Smart_Home_System" target="_blank"><span class="fa fa-github"></span></a>
-                        </div>
-                    </div>
-                    <div id="petBoarding" class="project__item">
-                        <h2>Pet boarding system</h2>
-                        <div class="project__item--inner">
-                            <div class="project__flip--front">
-                                <p>A full stack application</p>
-                                <p>The frontend of the application is built using HTML and CSS to provide GUI for the
-                                    user.</p>
-                                <p>The Backend is bulit using Node JS, Express JS and Mongo DB to store and authenticate
-                                    user and booking information.</p>
-                            </div>
-                            <div class="project__flip--back">
-                                <h3>Tech Stack Used</h3>
-                                <ul>
-                                    <li>Visual Studio Code</li>
-                                    <li>HTML</li>
-                                    <li>CSS</li>
-                                    <li>NODE JS</li>
-                                    <li>EXPRESS JS</li>
-                                    <li>MONGO DB</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="project__footer">
-                            <span>Know More -- </span>
-                            <a href="https://github.com/Suhasraj007/Pet_Boarding_System" target="_blank"><span class="fa fa-github"></span></a>
-                        </div>
-                    </div>
-                    <div id="portfolio" class="project__item">
-                        <h2>Portfolio Website</h2>
-                        <div class="project__item--inner">
-                            <div class="project__flip--front">
-                                <p>A front end application</p>
-                                <p>Portfolio website which showcases my skills, accomplishments, and expertise to a
-                                    broader audience.</p>
-                                <p> It serves as a platform to demonstrate my projects and expertise. It
-                                    allows me to present tangible examples of my abilities helping me to stand out from the competition.</p>
-                            </div>
-                            <div class="project__flip--back">
-                                <h3>Tech Stack Used</h3>
-                                <ul>
-                                    <li>Visual Studio Code</li>
-                                    <li>HTML</li>
-                                    <li>CSS</li>
-                                    <li>JAVASCRIPT</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="project__footer">
-                            <a href="#">Link | </a>
-                            <a href="https://github.com/Suhasraj007/Portfolio-Website" target="_blank"><span class="fa fa-github"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </article>
+<section id="contact" class="contact">
+  <div class="wrap reveal">
+    <div class="eyebrow">// Contact</div>
+    <h2>Let's build<br>something <span class="gt">fast.</span></h2>
+    <p>I'm open to backend / SDE roles and interesting systems problems. The inbox is always open.</p>
+    <div class="btn-row">
+      <a href="mailto:rajsuhas780@gmail.com" class="btn primary">Say hello <span class="ar">&#8599;</span></a>
+      <a href="https://leetcode.com/rajsuhas780/" target="_blank" rel="noopener" class="btn">LeetCode <span class="ar">&#8599;</span></a>
+    </div>
+  </div>
+</section>
+</main>
 
-        <article id="contact" class="contact__container">
-            <section class="contact">
-                <h2 class="contact__heading">Contact me</h2>
-                <p class="contact__info">I'd really like to hear from you!</p>
+<footer>
+  <div class="wrap">
+    <div class="fsocials">
+      <a href="https://github.com/Suhasraj007" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/suhas-s-06b3b1213/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://leetcode.com/rajsuhas780/" target="_blank" rel="noopener">LeetCode</a>
+      <a href="mailto:rajsuhas780@gmail.com">Email</a>
+    </div>
+    Designed &amp; built by <span class="gw">Suhas S</span> &middot; &copy; 2026
+  </div>
+</footer>
 
-                <form action="https://formsubmit.co/3a792c1a2c4edb3f889bb84b713f68f1" method="POST"
-                    class="contact__form">
-                    <p class="contact__tiles">
-                        <label class="contact__tiles--desc" for="Name">Name:</label>
-                        <input class="contact__tiles--input" type="text" name="Name" id="Name"
-                            placeholder="Your Name..." autocomplete="on" required>
-                    </p>
-                    <p class="contact__tiles">
-                        <label class="contact__tiles--desc" for="Email">Email:</label>
-                        <input class="contact__tiles--input" type="email" name="Email" id="Email"
-                            placeholder="Your Email..." autocomplete="on" required>
-                    </p>
-                    <p class="contact__tiles">
-                        <label class="contact__tiles--desc" for="message">Your Message:</label>
-                        <textarea class="contact__tiles--input" name="message" id="message" cols="30" rows="5"
-                            placeholder="Type your message here"></textarea>
-                    </p>
-                    <p class="contact__btn--container">
-                        <button id="sendMail" class="contact__btn" type="submit">Submit</button>
-                        <button class="contact__btn" type="reset">Reset</button>
-                    </p>
-                </form>
-            </section>
-        </article>
-    </main>
+<script>
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20));
+  const burger=document.getElementById('burger'),links=document.getElementById('navlinks');
+  burger.addEventListener('click',()=>links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
 
-    <footer class="footer">
-        <h2 class="footer__heading">Connect with me</h2>
-        <nav aria-label="secondary-navigation" class="footer__socials">
-            <a target="_blank" class="footer__icons" href="https://github.com/Suhasraj007"><span class="fa fa-github">
-                    |</span></a>
-            <a target="_blank" class="footer__icons" href="https://www.linkedin.com/in/suhas-s-06b3b1213/"><span
-                    class="fa fa-linkedin"> |</span></a>
-            <a target="_blank" class="footer__icons" href="mailto:rajsuhas780@gmail.com"><span class="fa fa-google">
-                    |</span></a>
-            <a href="#" class="footer__icons totop">^</a>
-        </nav>
-    </footer>
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const cio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){count(e.target);cio.unobserve(e.target);}});},{threshold:.5});
+  document.querySelectorAll('.num[data-target]').forEach(el=>cio.observe(el));
+  function count(el){
+    const t=+el.dataset.target,pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
+    if(reduce){el.textContent=pre+t+suf;return;}
+    let s=null,dur=1300;
+    function step(ts){if(!s)s=ts;const p=Math.min((ts-s)/dur,1);const v=Math.round((1-Math.pow(1-p,3))*t);
+      el.textContent=pre+v+suf;if(p<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);
+  }
+
+  if(!reduce && matchMedia('(pointer:fine)').matches){
+    const cg=document.getElementById('cg');
+    addEventListener('mousemove',e=>{cg.style.opacity='1';cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px';});
+  }
+</script>
 </body>
-
 </html>
